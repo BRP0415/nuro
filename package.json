@@ -11,7 +11,7 @@
     "react-scripts": "5.0.1",
     "@react-three/fiber": "^8.14.0",
     "@react-three/drei": "^9.88.0",
-    "three": "^r159",
+    "three": "r159",
     "axios": "^1.6.0",
     "zustand": "^4.4.0",
     "lucide-react": "^0.294.0"
