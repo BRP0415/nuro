@@ -1,8 +1,8 @@
 {
   "name": "nuro",
   "version": "1.0.0",
-  "description": "Local AI assistant with computer control and brain visualization",
-  "main": "electron/main.js",
+  "description": "Standalone AI assistant with computer control - no prerequisites needed",
+  "main": "electron/main-standalone.js",
   "homepage": "./",
   "private": true,
   "dependencies": {
@@ -19,11 +19,11 @@
   "devDependencies": {
     "electron": "^26.0.0",
     "electron-builder": "^24.6.4",
-    "electron-dev-client": "^0.0.2",
     "tailwindcss": "^3.3.3",
     "postcss": "^8.4.30",
     "autoprefixer": "^10.4.16",
-    "concurrently": "^8.2.1"
+    "concurrently": "^8.2.1",
+    "pyinstaller": "^5.13.2"
   },
   "scripts": {
     "react-start": "react-scripts start",
@@ -31,8 +31,8 @@
     "electron-start": "electron .",
     "start": "concurrently \"npm run react-start\" \"wait-on http://localhost:3000 && npm run electron-start\"",
     "build": "npm run react-build",
-    "build:exe": "npm run build && electron-builder --win --publish never",
-    "eject": "react-scripts eject"
+    "build:exe": "python build-scripts/create-standalone-exe.py",
+    "build:installer": "npm run build:exe && python build-scripts/package-standalone.py"
   },
   "build": {
     "appId": "com.nuro.ai",
@@ -40,7 +40,6 @@
     "files": [
       "build/**/*",
       "electron/**/*",
-      "backend/dist/**/*",
       "node_modules/**/*"
     ],
     "win": {
